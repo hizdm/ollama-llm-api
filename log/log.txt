@@ -1,0 +1,18 @@
+[2;32m[2024-12-25 15:46:41 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:46:41 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 74912.75ms
+[2;32m[2024-12-25 15:47:18 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:47:18 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 37588.12ms
+[2;32m[2024-12-25 15:49:03 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:49:03 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 104807.79ms
+[2;32m[2024-12-25 15:49:43 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:49:43 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 39830.23ms
+[2;32m[2024-12-25 15:51:00 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:51:00 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 76348.45ms
+[2;32m[2024-12-25 15:52:14 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:52:14 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 74221.39ms
+[2;32m[2024-12-25 15:53:33 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:53:33 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 79077.69ms
+[2;32m[2024-12-25 15:54:47 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:54:47 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 73742.25ms
+[2;32m[2024-12-25 15:55:59 _client.py:_send_single_request:1026 INFO][0m HTTP Request: POST http://192.168.16.8:11434/api/generate "HTTP/1.1 200 OK"
+[2;32m[2024-12-25 15:55:59 web.py:log_request:2239 INFO][0m 200 POST /generate (192.168.52.56) 71830.03ms
