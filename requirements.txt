@@ -2,6 +2,7 @@ tornado
 pymysql
 ollama
 jwt
+PyJWT
 redis
 neo4j-driver
 cx_Oracle
