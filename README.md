@@ -18,6 +18,7 @@ A Ollama LLM API Web Frame Based Tornado！
 │ ├── prompt.py          # 提示工程类
 │ ├── rag.py             # LLM检索增强生成类
 │ ├── strategy.py        # LLM调用策略类（todo）
+│ ├── chroma.py          # 向量数据库操作类
 │ └── home.py            # 默认首页类
 ├── library              # 基础类库
 │ ├── jwt                # JWT验证基类
@@ -32,6 +33,8 @@ A Ollama LLM API Web Frame Based Tornado！
 │ │ └── oraclehelper.py
 │ ├── neo4j              # Neo4j操作基类（部分）
 │ │ └── neo4jhelper.py
+│ ├── chromadb           # ChromaDB操作基类
+│ │ └── chromahelper.py
 │ └── util               # 公共方法工具
 │ └── util.py
 ├── log                  # 日志存放目录
@@ -40,7 +43,7 @@ A Ollama LLM API Web Frame Based Tornado！
 │ ├── base.py            # 模型基类
 │ └── llm.py             # LLM类
 ├── README.md
-├── requirements.txt     # 框架安装包 pip install -r requirements.txt （todo）
+├── requirements.txt     # 框架安装包 pip install -r requirements.txt 
 ├── router               # 路由分发层
 │ └── urls.py            # 路由分发文件 
 ├── static               # 资源层
@@ -131,4 +134,66 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
   "pid": "项目ID",
   "content": "hello"
 }
+```
+
+##### 创建向量数据库集合
+
+请求地址：`ip:端口号/createcollection`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+{
+  "collection": "test-001" # 集合名称
+}
+```
+
+##### 删除向量数据库集合
+
+请求地址：`ip:端口号/deletecollection`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+{
+  "collection": "test-001" # 集合名称
+}
+```
+
+##### 向量数据库添加文档
+
+请求地址：`ip:端口号/adddocument`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+{
+  "collection": "test-001",     # 集合名称
+  "ids": ["001", "002", "003"], # 文档ID
+  "model": "nomic-embed-text:latest" # 向量模型（默认：nomic-embed-text:latest）
+  "documents": ["xiaoming documents", "xiaohong documents", "xiaoqiang documents"], # 文档数据
+  "metadatas": [{"source": "001.txt"}, {"source": "002.txt"}, {"source": "003.txt"}] # 文档元数据
+}
+```
+
+##### 向量数据库查询
+
+请求地址：`ip:端口号/querydocument`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+{
+  "collection": "test-001",     # 集合名称
+  "model": "nomic-embed-text:latest" # 向量模型（默认：nomic-embed-text:latest）
+  "number": 3,    # 查询数量（默认：5）
+  "query": "hong" # 查询内容
 ```

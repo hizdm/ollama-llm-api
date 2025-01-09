@@ -21,5 +21,5 @@ urls = [
 	(r"/createcollection", chroma.CreateCollectionHandler),
 	(r"/adddocument", chroma.AddDocumentHandler),
 	(r"/querydocument", chroma.QueryDocumentHandler),
-	(r"deletecollection", chroma.DeleteCollectionHandler)
+	(r"/deletecollection", chroma.DeleteCollectionHandler)
 ]
