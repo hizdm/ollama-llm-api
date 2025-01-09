@@ -154,7 +154,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 1. 接口认证(Auth)
+### 1. 接口认证(Auth)
 
 请求地址：`ip:端口号/auth`
 
@@ -172,7 +172,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 2. 大语言模型生成(Generate)
+### 2. 大语言模型生成(Generate)
 
 请求地址：`ip:端口号/generate`
 
@@ -190,7 +190,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 3. 大语言模型对话(Chat)
+### 3. 大语言模型对话(Chat)
 
 请求地址：`ip:端口号/chat`
 
@@ -208,7 +208,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 4. 大语言模型向量化(Embedding)
+### 4. 大语言模型向量化(Embedding)
 
 请求地址：`ip:端口号/embedding`
 
@@ -226,7 +226,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 5. 大语言模型提示工程(Prompt)
+### 5. 大语言模型提示工程(Prompt)
 
 请求地址：`ip:端口号/prompt`
 
@@ -245,7 +245,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 6. 大语言模型检索增强生成(RAG)
+### 6. 大语言模型检索增强生成(RAG)
 
 请求地址：`ip:端口号/rag`
 
@@ -263,7 +263,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 # todo
 ```
 
-##### 7. 创建向量数据库集合
+### 7. 创建向量数据库集合
 
 请求地址：`ip:端口号/createcollection`
 
@@ -287,7 +287,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 8. 删除向量数据库集合
+### 8. 删除向量数据库集合
 
 请求地址：`ip:端口号/deletecollection`
 
@@ -310,7 +310,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 	"data": [
 ```
 
-##### 9. 向量数据库添加文档
+### 9. 向量数据库添加文档
 
 请求地址：`ip:端口号/adddocument`
 
@@ -338,7 +338,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 10. 向量数据库查询
+### 10. 向量数据库查询
 
 请求地址：`ip:端口号/querydocument`
 
