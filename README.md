@@ -136,7 +136,134 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 创建向量数据库集合
+大语言模型生成(Generate)
+
+请求地址：`ip:端口号/generate`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 1. 接口认证(Auth)
+
+请求地址：`ip:端口号/auth`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 2. 大语言模型生成(Generate)
+
+请求地址：`ip:端口号/generate`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 3. 大语言模型对话(Chat)
+
+请求地址：`ip:端口号/chat`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 4. 大语言模型向量化(Embedding)
+
+请求地址：`ip:端口号/embedding`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 5. 大语言模型提示工程(Prompt)
+
+请求地址：`ip:端口号/prompt`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 6. 大语言模型检索增强生成(RAG)
+
+请求地址：`ip:端口号/rag`
+
+请求方式：`post`
+
+请求参数：`json`
+
+```python
+# todo
+```
+
+接口返回：`json`
+
+```python
+# todo
+```
+
+##### 7. 创建向量数据库集合
 
 请求地址：`ip:端口号/createcollection`
 
@@ -150,7 +277,17 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 删除向量数据库集合
+接口返回：`json`
+
+```python
+{
+	"code": 0,
+	"message": "Collection 'test-001' create success.",
+	"data": []
+}
+```
+
+##### 8. 删除向量数据库集合
 
 请求地址：`ip:端口号/deletecollection`
 
@@ -164,7 +301,16 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 向量数据库添加文档
+接口返回：`json`
+
+```python
+{
+	"code": 0,
+	"message": "Collection 'test-001' delete success.",
+	"data": [
+```
+
+##### 9. 向量数据库添加文档
 
 请求地址：`ip:端口号/adddocument`
 
@@ -182,7 +328,17 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-##### 向量数据库查询
+接口返回：`json`
+
+```python
+{
+	"code": 0,
+	"message": "Added 3 documents to 'test-001'.",
+	"data": [3]
+}
+```
+
+##### 10. 向量数据库查询
 
 请求地址：`ip:端口号/querydocument`
 
@@ -193,7 +349,45 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 ```python
 {
   "collection": "test-001",     # 集合名称
-  "model": "nomic-embed-text:latest" # 向量模型（默认：nomic-embed-text:latest）
+  "model": "nomic-embed-text:latest", # 向量模型（默认：nomic-embed-text:latest）
   "number": 3,    # 查询数量（默认：5）
   "query": "hong" # 查询内容
+}
+```
+
+接口返回：`json`
+
+```python
+{
+	"code": 0,
+	"message": "success",
+	"data": {
+		"ids": [
+			["002", "003", "001"]
+		],
+		"embeddings": null,
+		"documents": [
+			["xiaohong
+				documents ", "
+				xiaoqiang documents ", "
+				xiaoming documents "]], "
+				uris ": null, "
+				data ": null, "
+				metadatas ": [[{"
+				source ":
+				"002.txt"
+			}, {
+				"source": "003.txt"
+			}, {
+				"source": "001.txt"
+			}
+		]],
+	"distances": [
+		[538.5186078395823, 555.5955598005668,
+			593.4459312118717
+		]
+	],
+	"included": ["distances", "documents", "metadatas"]
+}
+}
 ```
