@@ -8,6 +8,7 @@ from controller import auth
 from controller import generate
 from controller import embeddings
 from controller import rag
+from controller import chroma
 
 # Routers
 urls = [
@@ -16,5 +17,9 @@ urls = [
 	(r"/auth", auth.AuthHandler),
 	(r"/chat", chat.ChatHandler),
 	(r"/generate", generate.GenerateHandler),
-	(r"/embeddings", embeddings.EmbeddingsHandler)
+	(r"/embeddings", embeddings.EmbeddingsHandler),
+	(r"/createcollection", chroma.CreateCollectionHandler),
+	(r"/adddocument", chroma.AddDocumentHandler),
+	(r"/querydocument", chroma.QueryDocumentHandler),
+	(r"deletecollection", chroma.DeleteCollectionHandler)
 ]
