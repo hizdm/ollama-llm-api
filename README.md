@@ -136,23 +136,7 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 }
 ```
 
-大语言模型生成(Generate)
 
-请求地址：`ip:端口号/generate`
-
-请求方式：`post`
-
-请求参数：`json`
-
-```python
-# todo
-```
-
-接口返回：`json`
-
-```python
-# todo
-```
 
 ### 1. 接口认证(Auth)
 
@@ -254,13 +238,50 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 请求参数：`json`
 
 ```python
-# todo
+{
+    "collection": "text2sql-001",                 # 向量数据库集合名称
+    "generate_model": "codegemma:7b",             # 生成类大语言模型
+    "embedding_model": "nomic-embed-text:latest", # 编码类大语言模型
+    "number": 3,                                  # 检索数量（默认1）
+    "content": "生成获取用户小明的手机号以及邮箱的sql"  # 问题
+}
 ```
 
 接口返回：`json`
 
 ```python
-# todo
+{
+    "code": 0, 
+    "message": "success",
+    "data": "SELECT mobile, email FROM t_user WHERE user_name = '小明';"
+}
+```
+
+```sql
+// 向量数据库存储内容
+CREATE TABLE `t_user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `user_no` char(20) NOT NULL DEFAULT '' COMMENT '员工编号',
+  `user_name` char(20) NOT NULL DEFAULT '' COMMENT '员工姓名',
+  `department_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '科室ID',
+  `mobile` char(16) NOT NULL DEFAULT '' COMMENT '手机号',
+  `email` char(40) NOT NULL DEFAULT '' COMMENT '邮箱',
+  `photo` char(100) NOT NULL DEFAULT '' COMMENT '头像',
+  `right_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '权限ID',
+  `title_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '职称ID',
+  `duty_id` int(10) unsigned NOT NULL DEFAULT 0 COMMENT '职务ID',
+  `password` char(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `salt` char(8) NOT NULL DEFAULT '' COMMENT '盐',
+  `sex` tinyint(3) NOT NULL DEFAULT 1 COMMENT '性别(1:未知, 2:男, 3:女)',
+  `status` tinyint(3) NOT NULL DEFAULT 1 COMMENT '状态(0:无效, 1:有效)',
+  `descriptions` varchar(500) NOT NULL DEFAULT '' COMMENT '备注说明',
+  `create_time` int(11) NOT NULL DEFAULT 0 COMMENT '创建时间',
+  `update_time` int(11) NOT NULL DEFAULT 0 COMMENT '更新时间',
+  `last_login_time` int(11) NOT NULL DEFAULT 0 COMMENT '最后登录时间',
+  `last_logout_time` int(11) NOT NULL DEFAULT 0 COMMENT '最后登出时间',
+  PRIMARY KEY (`id`),
+  UNIQUE(`user_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='用户表';
 ```
 
 ### 7. 创建向量数据库集合
@@ -307,7 +328,8 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 {
 	"code": 0,
 	"message": "Collection 'test-001' delete success.",
-	"data": [
+	"data": []
+}
 ```
 
 ### 9. 向量数据库添加文档
