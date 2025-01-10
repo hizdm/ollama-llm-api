@@ -147,13 +147,37 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 请求参数：`json`
 
 ```python
-# todo
+{
+    "uid": "eb57b5723e",
+    "secret": "50296e332969d0fe35dfd5a61c016d25"
+}
 ```
 
 接口返回：`json`
 
 ```python
-# todo
+{
+    "code": 0,
+    "message": "success",
+    "data": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlhdCI6MTczNTAyMzQ5OCwiaXNzIjoidG9ybmFkbyIsInBheWxvYWQiOnsidWlkIjoiZWI1N2I1NzIzZSIsInVuYW1lIjoiIn19.ubA-P8ehTzOftnS0nDqedJgQYAL3mu3sx2pjJzs3E64"
+}
+```
+
+```sql
+CREATE TABLE `t_consumer` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT 'ID',
+  `consumer_no` char(20) NOT NULL DEFAULT '' COMMENT '厂商编号',
+  `consumer_name` char(20) NOT NULL DEFAULT '' COMMENT '厂商名称',
+  `password` char(32) NOT NULL DEFAULT '' COMMENT '密码',
+  `status` tinyint(3) NOT NULL DEFAULT '1' COMMENT '状态(0:无效, 1:有效)',
+  `descriptions` varchar(500) NOT NULL DEFAULT '' COMMENT '备注说明',
+  `create_time` int(11) NOT NULL DEFAULT '0' COMMENT '创建时间',
+  `update_time` int(11) NOT NULL DEFAULT '0' COMMENT '更新时间',
+  `last_login_time` int(11) NOT NULL DEFAULT '0' COMMENT '最后登录时间',
+  `last_logout_time` int(11) NOT NULL DEFAULT '0' COMMENT '最后登出时间',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `consumer_no` (`consumer_no`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='厂商接入表'
 ```
 
 ### 2. 大语言模型生成(Generate)
@@ -194,20 +218,23 @@ Authorization: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MzU2MjgyOTgsImlh
 
 ### 4. 大语言模型向量化(Embedding)
 
-请求地址：`ip:端口号/embedding`
+请求地址：`ip:端口号/embeddings`
 
 请求方式：`post`
 
 请求参数：`json`
 
 ```python
-# todo
+{
+    "model": "nomic-embed-text:latest",
+    "content": "hello"
+}
 ```
 
 接口返回：`json`
 
 ```python
-# todo
+
 ```
 
 ### 5. 大语言模型提示工程(Prompt)

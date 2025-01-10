@@ -30,27 +30,23 @@ class EmbeddingsHandler(BaseHandler):
 		}
 
 		# Params
-		if pid is None:
-			output = {'code':400202, 'message':'pid is null', 'data':[]}
-			self.write(json.dumps(output))
-			return
 		if model is None:
 			output = {'code':400203, 'message':'model is null', 'data':[]}
 			self.write(json.dumps(output))
 			return
 
-		# Auth
-		authToken = self.getHeaders()
-		if not authToken:
-			self.write({'code':400201, 'message':'signature error', 'data':[]})
-			return
-		else:
-			payload = authToken.get('payload')
-			if not payload:
-				self.write({'code':400204, 'message':'signature error', 'data':[]})
-				return
-			else:
-				uid = payload.get('uid')
+		# # Auth
+		# authToken = self.getHeaders()
+		# if not authToken:
+		# 	self.write({'code':400201, 'message':'signature error', 'data':[]})
+		# 	return
+		# else:
+		# 	payload = authToken.get('payload')
+		# 	if not payload:
+		# 		self.write({'code':400204, 'message':'signature error', 'data':[]})
+		# 		return
+		# 	else:
+		# 		uid = payload.get('uid')
 
 		# Strategy
 		# todo
