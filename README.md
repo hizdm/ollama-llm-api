@@ -60,7 +60,7 @@
 ```shell
 # APP基础配置
 [app]
-port = 8000    # 本项目默认端口
+port = 8282    # 本项目默认端口
 debug = True   # True：开启调试模式
 
 # JWT相关配置
@@ -128,7 +128,7 @@ num_ctx = 1024
 
 # [启动]
 
-`python3 app.py --port=自定义端口号（不加默认8000）`
+`python3 app.py --port=自定义端口号（不加默认8282）`
 
 # [接口]
 
