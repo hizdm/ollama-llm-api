@@ -4,10 +4,14 @@
 
 import sys
 import json
+#import asyncio
+#from ollama import AsyncClient
 from ollama import Client
 from library.util import util
 from controller.base import BaseHandler
 from controller.prompt import PromptHandler
+from controller.strategy import StrategyHandler
+
 
 """
 Ollama Chat
@@ -15,12 +19,13 @@ Ollama Chat
 class ChatHandler(BaseHandler):
 	def post(self):
 		try:
-			data    = json.loads(self.request.body)  # 请求数据
-			model   = data.get('model', None)        # 模型名称
-			role    = data.get('role', 'user')       # 角色名称
-			message = data.get('message', 'Hello')   # 对话内容[输入内容(默认Hello)->提示工程处理]
-			pid     = data.get('pid', None)          # 项目标识
-			prompt  = data.get('prompt', None)       # 提示工程标识
+			data        = json.loads(self.request.body)  # 请求数据
+			model       = data.get('model', None)        # 模型名称
+			role        = data.get('role', 'user')       # 角色名称
+			content     = data.get('content', 'Hello')   # 对话内容[输入内容(默认Hello)->提示工程处理]
+			prompt      = data.get('prompt', None)       # 提示工程标识
+			is_stream   = data.get('is_stream', 0)       # 是否流式输出
+			temperature = data.get('temperature', float(util.fetch_conf('global.ini', 'chat', 'temperature')))   # 温度
 		except json.JSONDecodeError:
 			self.set_status(400)
 			self.write({'code':400201, 'message':'invalid json', 'data':[]})
@@ -33,10 +38,6 @@ class ChatHandler(BaseHandler):
 		}
 
 		# Params
-		if pid is None:
-			output = {'code':400202, 'message':'pid is null', 'data':[]}
-			self.write(json.dumps(output))
-			return
 		if model is None:
 			output = {'code':400203, 'message':'model is null', 'data':[]}
 			self.write(json.dumps(output))
@@ -56,7 +57,15 @@ class ChatHandler(BaseHandler):
 				uid = payload.get('uid')
 
 		# Strategy
-		# todo
+		objStrategy = StrategyHandler(uid)
+		s1 = objStrategy.sInterval({})
+		if s1['code'] != 0:
+			self.write(json.dumps(s1))
+			return
+		s2 = objStrategy.sTimetotal({})
+		if s2['code'] != 0:
+			self.write(json.dumps(s2))
+			return
 
 		# Prompt
 		if prompt is not None:
@@ -65,7 +74,7 @@ class ChatHandler(BaseHandler):
 			if promptInfo is not None:
 				promptTemplate = promptInfo.get("prompt_data", None)
 				if promptTemplate is not None:
-					message = promptTemplate.replace("{%S%}", message)
+					content = promptTemplate.replace("{%S%}", content)
 
 		# Chat
 		try:
@@ -73,15 +82,28 @@ class ChatHandler(BaseHandler):
 			response = client.chat(model=model, 
 				messages=[{
 					"role": role,
-					"content": message
+					"content": content
 				}],
-				options={"temperature": 0})
-			output["data"] = response
+				stream = True if is_stream == 1 else False,
+				options={
+				    "temperature": temperature, 
+					"num_keep": int(util.fetch_conf('global.ini', 'chat', 'num_keep')),
+					"num_ctx": int(util.fetch_conf('global.ini', 'chat', 'num_ctx')),
+				})
+			if is_stream == 1:
+				for chunk in response:
+					#output["data"] = chunk['message']['content']
+					#self.write(chunk['message']['content'])
+					#print(json.dumps(output, ensure_ascii=False))
+					self.write(chunk['message']['content'])
+					self.flush()
+			else:
+				output["data"] = response.message.content
+				self.write(json.dumps(output, ensure_ascii=False))
 		except Exception as e:
 			output = {
 				"code": 400444,
 				"message": "system error",
 				"data": {}
 			}
-
-		self.write(json.dumps(output))
+			self.write(json.dumps(output, ensure_ascii=False))
