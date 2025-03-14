@@ -92,7 +92,7 @@ class GenerateHandler(BaseHandler):
 					self.write(chunk['response'])
 					self.flush()
 			else:
-				output["data"] = response.message.content
+				output["data"] = response['response']
 				self.write(json.dumps(output, ensure_ascii=False))
 
 		except Exception as e:
