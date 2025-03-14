@@ -103,6 +103,27 @@ interval = 1
 # LLM
 [llm]
 host = 192.168.16.8:11434 # Ollama服务
+
+# 大模型能力访问策略
+[strategy]
+# 间隔x秒访问一次
+interval = 5
+# 在total_time内能够访问times次
+times = 30
+total_time = 3600
+total_son_time = 86400
+
+# 聊天参数
+[chat]
+temperature = 0.8
+num_keep = 5
+num_ctx = 1024
+
+# 内容生成参数
+[generate]
+temperature = 0.8
+num_keep = 5
+num_ctx = 1024
 ```
 
 # [启动]
