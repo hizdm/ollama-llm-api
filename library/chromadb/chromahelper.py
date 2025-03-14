@@ -16,10 +16,13 @@ class ChromaHelper:
     @brief 创建集合
     """
     def createCollection(self, name: str):
-        if name in self.client.list_collections():
-            # raise ValueError(f"Collection '{name}' already exists.")
+        try:
+            if name in self.client.list_collections():
+                # raise ValueError(f"Collection '{name}' already exists.")
+                return False
+            return self.client.create_collection(name)
+        except Exception as e:
             return False
-        return self.client.create_collection(name)
 
     """
     @brief 获取集合
@@ -50,7 +53,6 @@ class ChromaHelper:
             return False
         collection = self.client.get_collection(collection_name)
         collection.add(ids=ids, documents=documents, metadatas=metadatas, embeddings=embeddings)
-
         return True
 
     """
