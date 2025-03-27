@@ -17,7 +17,7 @@
 │ ├── generate.py        # LLM生成类
 │ ├── prompt.py          # 提示工程类
 │ ├── rag.py             # LLM检索增强生成类
-│ ├── strategy.py        # LLM调用策略类（todo）
+│ ├── strategy.py        # LLM调用策略类
 │ ├── chroma.py          # 向量数据库操作类
 │ └── home.py            # 默认首页类
 ├── library              # 基础类库
@@ -31,7 +31,7 @@
 │ │ └── redishelper.py
 │ ├── oracle             # Oracle操作基类
 │ │ └── oraclehelper.py
-│ ├── neo4j              # Neo4j操作基类（部分）
+│ ├── neo4j              # Neo4j操作基类
 │ │ └── neo4jhelper.py
 │ ├── chromadb           # ChromaDB操作基类
 │ │ └── chromahelper.py
